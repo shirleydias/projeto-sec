@@ -1,0 +1,37 @@
+name: Validacao Hash_ID
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Baixar o codigo do repositorio
+        uses: actions/checkout@v7
+
+      - name: Preparar uv e Python
+        uses: astral-sh/setup-uv@v9
+        with:
+          python-version: "3.14"
+
+      - name: Instalar just
+        uses: extractions/setup-just@v4
+
+      - name: Instalar dependencias
+        run: uv sync --locked --all-extras
+
+      - name: Executar testes
+        run: just test
+
+      - name: Verificar qualidade do codigo
+        run: just lint
+
+      - name: Demonstrar identificacao
+        run: just run -- 5f4dcc3b5aa765d61d8327deb882cf99
