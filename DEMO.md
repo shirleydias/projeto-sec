@@ -106,4 +106,4 @@ Como evolução, seria possível ampliar o catálogo de modos, validar os format
 
 ## 2. Vídeo de demonstração
 
-Link do vídeo: ainda não disponibilizado.
+https://youtu.be/-4KNN-_jlAI
